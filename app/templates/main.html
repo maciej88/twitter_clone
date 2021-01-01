@@ -1,4 +1,20 @@
-{% extends 'base.html' %}
+
+{% extends "base.html" %}
+
 {% block content %}
-<p> Hello world!</p>
-{% endblock %}
+    <table border="1">
+    <tr>
+        <td>Tekst tweeta:</td>
+        <td>Data utworzenia wpisu:</td>
+        <td>Od kogo:</td>
+    </tr>
+    {% for tweet in tweets %}
+    <tr>
+        <td><a href="{% url 'post' tweet_id=tweet.id%}"> {{ tweet.content }}</a></td>
+        <td>{{ tweet.creation_date }}</td>
+        <td>{{ tweet.user }}</td>
+    </tr>
+
+    {% endfor %}
+    </table>
+{% endblock content %}
