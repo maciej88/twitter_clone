@@ -27,3 +27,26 @@ class UserLogin(View):
                 return HttpResponse('Login or email invalid')
             # error info
             return redirect('/')
+
+ #user log out:
+class UserLogout(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return redirect('/')
+
+# user register:
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            password1 = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
+            user = authenticate(email=email, password1=password1, password2=password2)
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'register.html', {'form': form})
