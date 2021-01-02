@@ -13,3 +13,4 @@ class SignUpForm(forms.Form):
     class Meta:
         user = User
         fields = ('email', 'password1', 'password2')
+

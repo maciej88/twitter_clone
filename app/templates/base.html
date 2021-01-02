@@ -6,14 +6,14 @@
 </head>
     {{ request.user.useremail}}
     {% if user.is_authenticated %}
-    <a href="/logout/">{{ user.email }} logout</a>
+    <a href="{% url 'logout' %}">{{ user.email }} logout</a>
     {% else %}
-    <a href="/login/"> login </a><br>
-    <a href="/register/">Register</a>
+    <a href="{% url 'login' %}"> login </a><br>
+    <a href="{% url 'register' %}">Register</a>
     {% endif %}
 
 <body>
-    <h1 href="/"> Twitter Clone</h1>
+<h1><a href="{% url 'main' %}">Twitter Clone</a></h1>
 {% block content %}
     <h1>This is only skill show site by Maciej Krywult </h1>
     <h2> Enjoy!</h2>
