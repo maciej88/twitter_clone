@@ -10,7 +10,7 @@
     </tr>
     {% for tweet in tweets %}
     <tr>
-        <td><a href="{% url 'post' tweet_id=tweet.id%}"> {{ tweet.content }}</a></td>
+        <td><a> {{ tweet.content }}</a></td>
         <td>{{ tweet.creation_date }}</td>
         <td>{{ tweet.user }}</td>
     </tr>
