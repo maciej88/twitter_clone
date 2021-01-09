@@ -6,7 +6,8 @@
 </head>
     {{ request.user.useremail}}
     {% if user.is_authenticated %}
-    <a href="{% url 'logout' %}">{{ user.email }} logout</a>
+    <a href="{% url 'logout' %}">{{ user.email }} -> logout</a><br>
+        <a href="{% url 'create-tweet' %}"> Create new tweet</a>
     {% else %}
     <a href="{% url 'login' %}"> login </a><br>
     <a href="{% url 'register' %}"> Register </a>

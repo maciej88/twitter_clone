@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
+from django.views.generic import CreateView
 
 from .models import Tweet
 from .forms import *
@@ -54,3 +55,15 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'register.html', {'form': form})
+
+#create tweet for loged user:
+class CreateTweet(LoginRequiredMixin, CreateView):
+    template_name = "tweet_add.html"
+    model = Tweet
+    fields = ['content']
+
+    def form_valid(self, form):
+        user = self.request.user
+        content = form.cleaned_data.get('content')
+        Tweet.objects.create(content=content, user=user)
+        return redirect('/')

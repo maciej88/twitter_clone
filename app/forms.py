@@ -14,3 +14,11 @@ class SignUpForm(forms.Form):
         user = User
         fields = ('email', 'password1', 'password2')
 
+# tweet create form:
+class TweetAddForm(forms.Form):
+    class Meta:
+        model = Tweet
+        fields = '__all__'
+        widgets = {
+            'name': forms.Textarea(attrs={'cols': 60, 'rows': 40}),
+        }
