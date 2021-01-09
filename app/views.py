@@ -67,3 +67,14 @@ class CreateTweet(LoginRequiredMixin, CreateView):
         content = form.cleaned_data.get('content')
         Tweet.objects.create(content=content, user=user)
         return redirect('/')
+
+#User detail site:
+class UserDetails(LoginRequiredMixin, View):
+    def get(self, request, user_id):
+        user_info = User.objects.get(id=user_id)
+        tweets = Tweet.objects.filter(user_id=user_id)
+        ctx = {
+            'user_info': user_info,
+            'tweets': tweets,
+        }
+        return render(request, 'user_side.html', ctx)

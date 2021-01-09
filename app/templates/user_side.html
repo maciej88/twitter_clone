@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<p>User: {{ user_info.email }}</p>
+<p>Tweets: {{ user_info.tweet_set.count }}</p>
+<p>Last ligin: {{ user_info.last_login }}</p>
+<p> Regstration date {{ user_info.date_joined }}</p>
+    <h1>Your Tweets:</h1>
+{% for tweet in tweets %}
+    <hr>
+                <h7>{{ tweet.creation_date|timesince }} ago</h7>
+                <h7>{{ tweet.content }}</h7>
+                <p><i>{{ tweet.user }}</i></p>
+    <hr>
+{% endfor %}
+
+{% endblock %}
