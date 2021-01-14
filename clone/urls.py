@@ -22,7 +22,7 @@ urlpatterns = [
     path('', Base.as_view(), name='main'),
     path('login', UserLogin.as_view(), name='login'),
     path('logout/', UserLogout.as_view(), name='logout'),
-    path('register/', signup, name='register'),
+    path('register/', UserAdd.as_view(), name='register'),
     path('createtweet/', CreateTweet.as_view(), name='create-tweet'),
     path('user/<int:user_id>/', UserDetails.as_view(), name='user-details')
 ]

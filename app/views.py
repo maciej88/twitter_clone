@@ -40,20 +40,21 @@ class UserLogout(LoginRequiredMixin, View):
         return redirect('/')
 
 # user register:
-def signup(request):
-    if request.method == 'POST':
+class UserAdd(View):
+    def get(self, request):
+        form = SignUpForm()
+        return render(request, 'register.html', {'form': form})
+    def post(self, request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password1 = form.cleaned_data.get('password1')
             password2 = form.cleaned_data.get('password2')
-            user = authenticate(email=email, password1=password1, password2=password2)
-            if user is not None:
-                login(request, user)
-                return redirect('/')
-    else:
-        form = SignUpForm()
-    return render(request, 'register.html', {'form': form})
+            User.objects.create_user(password=password1, email=email)
+            return redirect('login')
+        else:
+            return render(request, 'register.html', {'form': form})
+
 
 #create tweet for loged user:
 class CreateTweet(LoginRequiredMixin, CreateView):
