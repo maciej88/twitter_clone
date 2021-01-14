@@ -9,6 +9,11 @@ class UserLoginForm(forms.Form):
 
 class SignUpForm(forms.Form):
     email = forms.EmailField(max_length=64, label='Email as Login', help_text='Required. Enter a valid email adress.')
+    password1 = forms.CharField(max_length=64, label='Password',
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}))
+    password2 = forms.CharField(
+        max_length=64, label='Repeat password',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Powtórz hasło'}))
 
     class Meta:
         user = User
