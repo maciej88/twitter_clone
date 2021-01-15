@@ -54,3 +54,6 @@ class Tweet(models.Model):
     content = models.CharField(max_length=200, verbose_name='Tweetnij!: ')
     creation_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-creation_date']
