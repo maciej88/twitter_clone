@@ -3,6 +3,7 @@ Simple clone of twitter comunicator
 
 - As login is only email,
 - Simple tweets adding,
+- User details side,
 
 in future add:
 - photo adding
