@@ -12,3 +12,6 @@ in future add:
 - validation token sending on email
 - pagination
 - running it on some server ;)
+
+actual working on (consuming documentation, stackoverflow, etc.):
+- message system between users.
