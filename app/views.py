@@ -78,3 +78,8 @@ class UserDetails(LoginRequiredMixin, View):
             'tweets': tweets,
         }
         return render(request, 'user_side.html', ctx)
+
+class MessageCreate(LoginRequiredMixin, CreateView):
+    template_name = "message_create.html"
+    model = Message
+    fields = ['message_content', 'reciver']
