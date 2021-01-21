@@ -59,7 +59,7 @@ class Tweet(models.Model):
         ordering = ['-creation_date']
 
 class Message(models.Model):
-    sender = models.ForeignKey(User, related_name="sender", on_delete=models.SET_NULL)
-    receiver = models.ForeignKey(User, related_name="receiver", on_delete=models.SET_NULL)
+    sender = models.ForeignKey(User, related_name="sender", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="receiver", on_delete=models.CASCADE)
     message_content = models.CharField(max_length=100)
     creation_date = models.DateTimeField(auto_now=True)
